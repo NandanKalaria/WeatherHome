@@ -1,0 +1,72 @@
+<div ng-cloak="" style="margin: 100px;">
+    <div layout="row" layout-align="center center">
+        <div>
+            <h4>Toggle To Change View &nbsp;</h4>
+        </div>
+        <div>
+            <md-switch ng-model="toggle" aria-label="Switch 1">
+            </md-switch>
+        </div>
+    </div>
+    <br>
+    <br>
+    <md-grid-list ng-if="!toggle" md-cols-xs="1" md-cols-sm="1" md-cols-md="2" md-cols-gt-md="3"
+        md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="20px" md-gutter-gt-sm="80px">
+
+        <md-grid-tile md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1" ng-repeat="city in myCities">
+            <md-card class="card">
+                <md-card-content style="height: inherit;" layout="column" layout-align="space-around center">
+                    <div ng-controller="DemoCtrl as ctrl" layout="column" ng-cloak>
+                        <md-icon ng-click="ctrl.openDialog($event, city.name)" class="md-raised"
+                            md-svg-icon="/assets/img/share.svg"></md-icon>
+                    </div>
+                    <div flex="15" class="name card-font">{{city.name}}</div>
+                    <img class="card-img" ng-src="/assets/img/weather-icons/{{city.icon}}.png"></img>
+                    <div flex="25" class="temp card-font">{{city.temp}}&#8451;</div>
+                    <div style="width: 100%; text-align: center;" flex="" layout="row"
+                        layout-align="space-around center">
+                        <div flex="" class="min card-font">{{city.min}}&#8451;</div>
+                        <div flex="" class="max card-font">{{city.max}}&#8451;</div>
+                    </div>
+
+                </md-card-content>
+
+            </md-card>
+        </md-grid-tile>
+
+        <md-grid-tile md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
+            <md-card class="card">
+                <div ng-controller="AddCtrl as ctrl" layout="column" ng-cloak>
+                    <md-card-content ng-click="ctrl.openDialog($event)" layout="row" layout-align="center center">
+                        <img style="height: inherit;" ng-src="/assets/img/plus.svg"></img>
+                    </md-card-content>
+                </div>
+            </md-card>
+        </md-grid-tile>
+
+    </md-grid-list>
+    <div ng-if="toggle" class="vrepeatContainer" ng-controller="vrepeatController as ctrl" ng-cloak>
+        <md-content layout="column">
+            <md-virtual-repeat-container md-auto-shrink id="vertical-container">
+                <div layout="row" layout-align="center center" md-virtual-repeat="city in myCities"
+                    class="repeated-item-vertical">
+
+                    <div flex="20" class="name list-font center">{{city.name}}</div>
+                    <div flex="35" class="center"><img class="list-img center"
+                            ng-src="/assets/img/weather-icons/{{city.icon}}.png"></img></div>
+                    <div flex="15" class="temp list-font center">{{city.temp}}&#8451;</div>
+                    <div flex="15" class="min list-font center">Min&nbsp;{{city.min}}&#8451;</div>
+                    <div flex="15" class="max list-font center">Max&nbsp;{{city.max}}&#8451;</div>
+                    <div ng-controller="DemoCtrl as ctrl" layout="column" ng-cloak>
+                        <md-icon ng-click="ctrl.openDialog($event, city.name)" md-svg-icon="/assets/img/share.svg">
+                        </md-icon>
+                    </div>
+
+                </div>
+    </div>
+    </md-virtual-repeat-container>
+
+    </md-content>
+</div>
+
+</div>

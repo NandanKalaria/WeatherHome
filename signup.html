@@ -1,0 +1,54 @@
+<div class="grid-container" layout="row">
+
+    <div style="width: 30vw;" flex="noshrink" layout="column" layout-align="space-around center">
+        <div>
+            <h2 ng-hide="signup">Sign Up Here!</h2>
+        </div>
+        <div>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>First Name</label>
+                <input required name="fname" ng-model="fname">
+                <div ng-messages="signupForm.fname.$error">
+                    <div ng-message="required">This is required.</div>
+                </div>
+            </md-input-container>
+        </div>
+
+        <div>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Last Name</label>
+                <input required name="lname" ng-model="lname">
+                <div ng-messages="signupForm.lname.$error">
+                    <div ng-message="required">This is required.</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>E-mail</label>
+                <input required name="eid" ng-model="eid">
+                <div ng-messages="signupForm.eid.$error">
+                    <div ng-message="required">This is required.</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Password</label>
+                <input required name="pwd" ng-model="pwd">
+                <div ng-messages="signupForm.pwd.$error">
+                    <div ng-message="required">This is required.</div>
+                </div>
+            </md-input-container>
+        </div>
+
+        <div>
+            <a href="#/">
+                <md-button class="md-raised md-primary" ng-click="adduser(fname, lname, eid, pwd)">Sign Up</md-button>
+            </a>
+        </div>
+    </div>
+
+    <div class="grid-container-image" style="width: 50rem;" flex="auto" hide-sm="" hide-xs="">
+    </div>
+</div>
